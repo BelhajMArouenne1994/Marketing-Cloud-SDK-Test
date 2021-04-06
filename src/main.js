@@ -13,6 +13,7 @@ function getBlocks() {
     var files = fs.readdirSync('src/TEMPLATE_BLOCKS/BLOCKS');
     console.log("\nCurrent directory filenames:");
     filenames.forEach(file => {
+
       console.log(file);
     });
 }
@@ -60,6 +61,10 @@ sdk.getData(function (data) {
 });
 
 document.getElementById('workspace').addEventListener("change", function () {
+process.stdout.write("hello: ");
+
+    console.log("\nCurrent directory filenames:");
+
     getBlocks();
 	paintSliderValues();
 	debounce(paintMap, 500)();
