@@ -56,6 +56,7 @@ sdk.getData(function (data) {
 });
 
 document.getElementById('workspace').addEventListener("change", function () {
+    getBlocks()
 	paintSliderValues();
 	debounce(paintMap, 500)();
 	paintSliderValues();
