@@ -5,6 +5,16 @@ var sdk = new SDK(null, null, true); // 3rd argument true bypassing https requir
 
 var blockName;
 
+function getBlocks() {
+    var path = require('path');
+    var file = 'src/TEMPLATE_BLOCKS/BLOCKS';
+    var filename = path.parse(file).base;
+    console.log(filename);
+    return filename;
+}
+
+
+
 function debounce (func, wait, immediate) {
 	var timeout;
 	return function() {
