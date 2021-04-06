@@ -34,10 +34,10 @@ function paintSliderValues () {
 
 function paintMap() {
     var e = document.getElementById("text-input-id-0");
-        var files = 'e.options[e.selectedIndex].value';
-    	if (!files) {
-    		return;
-    	}
+    var files = e.options[e.selectedIndex].value;
+    if (!files) {
+        return;
+    }
     var blockName = e.options[e.selectedIndex].value;
 	if (!blockName) {
 		return;
