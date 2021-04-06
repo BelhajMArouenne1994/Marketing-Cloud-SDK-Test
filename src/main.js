@@ -11,8 +11,10 @@ var blockName;
 
 function getBlocks() {
     var files = fs.readdirSync('src/TEMPLATE_BLOCKS/BLOCKS');
-    console.log(files);
-    return files;
+    console.log("\nCurrent directory filenames:");
+    filenames.forEach(file => {
+      console.log(file);
+    });
 }
 
 
