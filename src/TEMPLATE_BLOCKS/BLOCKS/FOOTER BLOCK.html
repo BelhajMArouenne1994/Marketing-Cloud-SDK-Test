@@ -1,0 +1,69 @@
+<div style="display:none">
+    %%=ContentBlockByName("Content Builder\TEMPLATE_BLOCKS\CODE SNIPPETS\CODE_SNIPPET_EMAIL_FOOTER_TRANSLATION")=%%
+    %%[
+    VAR @align
+    IF NOT EMPTY(__AdditionalEmailAttribute2) THEN
+    SET @align = __AdditionalEmailAttribute2
+    ELSE
+    SET @align = "justify"
+    ENDIF
+    ]%%
+</div>
+<table width="100%" cellpadding="0" cellspacing="0" border="0" align="center" class="w100v">
+    <tr>
+        <td>
+            <table width="800" cellpadding="0" cellspacing="0" border="0" align="center" class="w100v">
+                <tr>
+                    <td align="%%=v(@align)=%%" valign="top" style="padding-left:50px;padding-right:50px;padding-bottom:20px;font-family:Arial,sans-serif;font-size:10px;color:#000000;" class="pad-lr fs225v">
+                        <a href="%%=RedirectTo(@privacyPolicyLink)=%%" target="_blank" style="color:#000000;text-decoration:none;">%%=v(@privacyPolicyText)=%%</a>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0" border="0" align="center" class="w100v">
+    <tr>
+        <td>
+            <table width="800" cellpadding="0" cellspacing="0" border="0" align="center" class="w100v">
+                <tr>
+
+                    %%[IF @align == "center" THEN]%%
+
+                    <td align="justify" valign="top" style="padding-left:215px;padding-right:215px;padding-bottom:20px;font-family:Arial,sans-serif;font-size:10px;color:#000000;text-align: justify;text-decoration: none;text-transform: uppercase;" class="pad-lr fs225v">
+                        %%=v(@legalMentionText)=%%
+                        <a href="mailto:%%=v(@cscEmailAddress)=%%" style="color:#000000;text-decoration:none;">%%=v(@cscEmailAddress)=%%</a>.
+                        <a href="%%=CloudPagesURL(135)=%%" style="color:#000000;text-decoration:none;">%%=V(@unsubscribeText)=%%</a>
+                    </td>
+
+                    %%[ELSEIF @align == "right" THEN]%%
+
+                    <td align="justify" valign="top" style="padding-left:404px;padding-right:50px;padding-bottom:20px;font-family:Arial,sans-serif;font-size:10px;color:#000000;text-align: justify;text-decoration: none;text-transform: uppercase;" class="pad-lr fs225v">
+                        %%=v(@legalMentionText)=%%
+                        <a href="mailto:%%=v(@cscEmailAddress)=%%" style="color:#000000;text-decoration:none;">%%=v(@cscEmailAddress)=%%</a>.
+                        <a href="%%=CloudPagesURL(135)=%%" style="color:#000000;text-decoration:none;">%%=V(@unsubscribeText)=%%</a>
+                    </td>
+
+                    %%[ELSEIF @align == "left" THEN]%%
+
+                    <td align="justify" valign="top" style="padding-left:50px;padding-right:404px;padding-bottom:20px;font-family:Arial,sans-serif;font-size:10px;color:#000000;text-align: justify;text-decoration: none;text-transform: uppercase;" class="pad-lr fs225v">
+                        %%=v(@legalMentionText)=%%
+                        <a href="mailto:%%=v(@cscEmailAddress)=%%" style="color:#000000;text-decoration:none;">%%=v(@cscEmailAddress)=%%</a>.
+                        <a href="%%=CloudPagesURL(135)=%%" style="color:#000000;text-decoration:none;">%%=V(@unsubscribeText)=%%</a>
+                    </td>
+
+                    %%[ELSE]%%
+
+                    <td align="justify" valign="top" style="padding-left:50px;padding-right:404px;padding-bottom:20px;font-family:Arial,sans-serif;font-size:10px;color:#000000;text-align: justify;text-decoration: none;text-transform: uppercase;" class="pad-lr fs225v">
+                        %%=v(@legalMentionText)=%%
+                        <a href="mailto:%%=v(@cscEmailAddress)=%%" style="color:#000000;text-decoration:none;">%%=v(@cscEmailAddress)=%%</a>.
+                        <a href="%%=CloudPagesURL(135)=%%" style="color:#000000;text-decoration:none;">%%=V(@unsubscribeText)=%%</a>
+                    </td>
+
+                    %%[ENDIF]%%
+
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
