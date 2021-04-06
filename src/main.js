@@ -1,16 +1,18 @@
 require('../node_modules/@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system.css');
 
+var path = require('path');
+var findUp = require('find-up');
+var fs = require('fs');
+
 var SDK = require('blocksdk');
 var sdk = new SDK(null, null, true); // 3rd argument true bypassing https requirement: not prod worthy
 
 var blockName;
 
 function getBlocks() {
-    var path = require('path');
-    var file = 'src/TEMPLATE_BLOCKS/BLOCKS';
-    var filename = path.parse(file).base;
-    console.log(filename);
-    return filename;
+    var files = fs.readdirSync('src/TEMPLATE_BLOCKS/BLOCKS');
+    console.log(files);
+    return files;
 }
 
 
