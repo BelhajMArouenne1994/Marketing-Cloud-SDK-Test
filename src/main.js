@@ -1,11 +1,11 @@
 require('../node_modules/@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system.css');
+require('readFiles.js');
 
 var SDK = require('blocksdk');
 var sdk = new SDK(null, null, true); // 3rd argument true bypassing https requirement: not prod worthy
 
 var blockName;
 var files;
-
 
 function debounce (func, wait, immediate) {
 	var timeout;
@@ -54,6 +54,8 @@ sdk.getData(function (data) {
 });
 
 document.getElementById('workspace').addEventListener("change", function () {
+    var filesContents = _getAllFilesFromFolder("TEMPLATE_BLOCKS/BLOCKS");
+    console.log(filesContents);
 	paintSliderValues();
 	debounce(paintMap, 500)();
 	paintSliderValues();
