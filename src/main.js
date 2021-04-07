@@ -1,9 +1,5 @@
 require('../node_modules/@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system.css');
 
-var path = require('path');
-var findUp = require('find-up');
-var fs = require('fs');
-
 var SDK = require('blocksdk');
 var sdk = new SDK(null, null, true); // 3rd argument true bypassing https requirement: not prod worthy
 
@@ -29,7 +25,6 @@ function debounce (func, wait, immediate) {
 function paintSliderValues () {
     var e = document.getElementById("text-input-id-0");
 	document.getElementById('myText').innerHTML = document.getElementById("text-input-id-0").options[e.selectedIndex].value;
-
 }
 
 function paintMap() {
@@ -44,7 +39,7 @@ function paintMap() {
 	}
 	sdk.setContent('%%_messagecontext%% <table width="800" cellpadding="0" cellspacing="0" border="0" align="center" class="w100v"> <tr> <td align="left" valign="top" style="padding-left:50px;padding-right:50px;padding-bottom:50px;font-family:Arial,sans-serif;font-size:15px;color:#000000;" class="pad-lr fs3v"> IF YOU CAN"T READ THIS EMAIL, CLICK <a href="%%view_email_url%%" style="color:#000000;text-decoration:none;"> HERE</a>. </td> </tr> </table>');
 	sdk.setData({
-	    files: files;
+	    files: files,
 		blockName: blockName
 	});
 	localStorage.setItem('files', files);
