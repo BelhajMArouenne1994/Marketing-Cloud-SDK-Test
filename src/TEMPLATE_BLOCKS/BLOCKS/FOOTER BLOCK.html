@@ -27,8 +27,9 @@
         <td>
             <table width="800" cellpadding="0" cellspacing="0" border="0" align="center" class="w100v">
                 <tr>
-
+                    <div style="display:none">
                     %%[IF @align == "center" THEN]%%
+                    </div>    
 
                     <td align="justify" valign="top" style="padding-left:215px;padding-right:215px;padding-bottom:20px;font-family:Arial,sans-serif;font-size:10px;color:#000000;text-align: justify;text-decoration: none;text-transform: uppercase;" class="pad-lr fs225v">
                         %%=v(@legalMentionText)=%%
@@ -36,7 +37,9 @@
                         <a href="%%=CloudPagesURL(135)=%%" style="color:#000000;text-decoration:none;">%%=V(@unsubscribeText)=%%</a>
                     </td>
 
+                    <div style="display:none">
                     %%[ELSEIF @align == "right" THEN]%%
+                    </div>
 
                     <td align="justify" valign="top" style="padding-left:404px;padding-right:50px;padding-bottom:20px;font-family:Arial,sans-serif;font-size:10px;color:#000000;text-align: justify;text-decoration: none;text-transform: uppercase;" class="pad-lr fs225v">
                         %%=v(@legalMentionText)=%%
@@ -44,15 +47,19 @@
                         <a href="%%=CloudPagesURL(135)=%%" style="color:#000000;text-decoration:none;">%%=V(@unsubscribeText)=%%</a>
                     </td>
 
+                    <div style="display:none">
                     %%[ELSEIF @align == "left" THEN]%%
+                    </div>
 
                     <td align="justify" valign="top" style="padding-left:50px;padding-right:404px;padding-bottom:20px;font-family:Arial,sans-serif;font-size:10px;color:#000000;text-align: justify;text-decoration: none;text-transform: uppercase;" class="pad-lr fs225v">
                         %%=v(@legalMentionText)=%%
                         <a href="mailto:%%=v(@cscEmailAddress)=%%" style="color:#000000;text-decoration:none;">%%=v(@cscEmailAddress)=%%</a>.
                         <a href="%%=CloudPagesURL(135)=%%" style="color:#000000;text-decoration:none;">%%=V(@unsubscribeText)=%%</a>
                     </td>
-
+        
+                    <div style="display:none">
                     %%[ELSE]%%
+                    </div>
 
                     <td align="justify" valign="top" style="padding-left:50px;padding-right:404px;padding-bottom:20px;font-family:Arial,sans-serif;font-size:10px;color:#000000;text-align: justify;text-decoration: none;text-transform: uppercase;" class="pad-lr fs225v">
                         %%=v(@legalMentionText)=%%
@@ -60,7 +67,9 @@
                         <a href="%%=CloudPagesURL(135)=%%" style="color:#000000;text-decoration:none;">%%=V(@unsubscribeText)=%%</a>
                     </td>
 
+                    <div style="display:none">
                     %%[ENDIF]%%
+                    </div>
 
                 </tr>
             </table>
