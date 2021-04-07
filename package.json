@@ -18,12 +18,11 @@
   },
   "homepage": "https://github.com/tbesluau/sampleblock#readme",
   "dependencies": {
+    "@kwsites/file-exists": "^1.1.1",
     "@salesforce-ux/design-system": "^2.14.3",
     "blocksdk": "^1.0.0",
     "express": "^4.16.3",
-    "find-up": "^5.0.0",
-    "fs": "0.0.1-security",
-    "path": "^0.12.7"
+    "readdir": "^1.0.2"
   },
   "devDependencies": {
     "webpack": "^3.10.0",

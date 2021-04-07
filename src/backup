@@ -24,28 +24,45 @@ function debounce (func, wait, immediate) {
 function paintSliderValues () {
     var e = document.getElementById("text-input-id-0");
 	document.getElementById('myText').innerHTML = document.getElementById("text-input-id-0").options[e.selectedIndex].value;
-    var url = document.getElementById("text-input-id-0").options[e.selectedIndex].value;;
-    fetch(url)
-        .then( r => r.text() )
-        .then( t => {console.log(t); fileContent = t;} );
-
 }
+
+async function fetchBlocks(url) {
+    const response = await fetch(url);
+    const result = response.text();
+    return result;
+}
+
+const fileContent = () =>
+  fetch(url)
+    .then( r => r.text() )
+    .then( t => return t );
+
+
 
 function paintMap() {
     var e = document.getElementById("text-input-id-0");
+    var fileContent;
+
+    var url = "https://raw.githubusercontent.com/BelhajMArouenne1994/Marketing-Cloud-SDK-Test/master/src/TEMPLATE_BLOCKS/BLOCKS/CELINE%20SHOPS%20LINKS%20BLOCK.html";
+
+    fileContent = fetchBlocks(url);
+    console.log(fileContent);
 
     var blockName = e.options[e.selectedIndex].value;
 	if (!blockName) {
 		return;
 	}
 	sdk.setData({
+	    fileContent: fileContent,
 		blockName: blockName
 	});
 	sdk.setContent(fileContent);
+	localStorage.setItem('fileContent', fileContent);
 	localStorage.setItem('blockName', blockName);
 }
 
 sdk.getData(function (data) {
+    fileContent = data.fileContent || '';
 	blockName = data.blockName || '';
 	paintSliderValues();
 	paintMap();

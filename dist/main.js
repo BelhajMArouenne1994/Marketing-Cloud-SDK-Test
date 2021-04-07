@@ -68,13 +68,12 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(1);
-__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"readFiles.js\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 
 var SDK = __webpack_require__(19);
 var sdk = new SDK(null, null, true); // 3rd argument true bypassing https requirement: not prod worthy
-
+var fs = __webpack_require__(20);
 var blockName;
-var files;
+var fileContent;
 
 function debounce (func, wait, immediate) {
 	var timeout;
@@ -94,37 +93,34 @@ function debounce (func, wait, immediate) {
 function paintSliderValues () {
     var e = document.getElementById("text-input-id-0");
 	document.getElementById('myText').innerHTML = document.getElementById("text-input-id-0").options[e.selectedIndex].value;
+    var url = document.getElementById("text-input-id-0").options[e.selectedIndex].value;;
+    fetch(url)
+        .then( r => r.text() )
+        .then( t => {console.log(t); fileContent = t;} );
+
 }
 
 function paintMap() {
     var e = document.getElementById("text-input-id-0");
-    var files = e.options[e.selectedIndex].value;
-    if (!files) {
-        return;
-    }
+
     var blockName = e.options[e.selectedIndex].value;
 	if (!blockName) {
 		return;
 	}
-	sdk.setContent('%%_messagecontext%% <table width="800" cellpadding="0" cellspacing="0" border="0" align="center" class="w100v"> <tr> <td align="left" valign="top" style="padding-left:50px;padding-right:50px;padding-bottom:50px;font-family:Arial,sans-serif;font-size:15px;color:#000000;" class="pad-lr fs3v"> IF YOU CAN"T READ THIS EMAIL, CLICK <a href="%%view_email_url%%" style="color:#000000;text-decoration:none;"> HERE</a>. </td> </tr> </table>');
 	sdk.setData({
-	    files: files,
 		blockName: blockName
 	});
-	localStorage.setItem('files', files);
+	sdk.setContent(fileContent);
 	localStorage.setItem('blockName', blockName);
 }
 
 sdk.getData(function (data) {
-    files = data.files || '';
 	blockName = data.blockName || '';
 	paintSliderValues();
 	paintMap();
 });
 
 document.getElementById('workspace').addEventListener("change", function () {
-    var filesContents = _getAllFilesFromFolder("TEMPLATE_BLOCKS/BLOCKS");
-    console.log(filesContents);
 	paintSliderValues();
 	debounce(paintMap, 500)();
 	paintSliderValues();
@@ -976,6 +972,12 @@ if (typeof(window) === 'object') {
 if (true) {
 	module.exports = SDK;
 }
+
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports) {
+
 
 
 /***/ })
